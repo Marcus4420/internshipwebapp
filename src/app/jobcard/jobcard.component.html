@@ -1,0 +1,31 @@
+<input
+  type="text"
+  class="w-1/2 flex mx-auto border border-black bg-white rounded-lg p-2 my-4"
+  placeholder="Search for a title, teaser or ???"
+  #searchInput
+  (keyup)="searchForProject(searchInput.value)"
+/>
+<div class="grid grid-cols-1 p-4 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (job of jobs$(); track $index) {
+    <div class="card bg-white shadow-lg border border-black rounded-lg transition-transform transform hover:scale-105 min-w-0">
+      <div class="card-body p-4">
+        <h2 class="card-title text-lg font-semibold text-gray-800 break-words">
+          {{job.title}}
+        </h2>
+        <p class="text-gray-600 mt-2 break-words">{{job.teaser}}</p>
+        <p>Job by: {{job.company}}</p>
+        <div class="card-actions mt-4 flex justify-start items-center">
+          <button class="btn btn-primary bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="redirectTo(job.link)">Job page</button>
+          <div class="flex flex-col space-y-2">
+            @if(job.deadline) {
+              <div class="badge badge-outline border border-gray-300 text-gray-600 bg-gray-100 px-2 py-1 rounded">{{job.deadline}}</div>
+            }
+            @if(job.released) {
+              <div class="badge badge-outline border border-gray-300 text-gray-600 bg-gray-100 px-2 py-1 rounded">{{job.released}}</div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
