@@ -13,6 +13,7 @@ export interface Job {
   link: string
   scraped_from: string
   company: string | undefined;
+  image_url: string;
 }
 
 @Injectable({
