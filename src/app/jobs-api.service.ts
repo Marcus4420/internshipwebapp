@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, WritableSignal, Signal, inject, signal } from '@angular/core';
+import { Injectable, WritableSignal, Signal, inject, signal, computed } from '@angular/core';
 
 export interface JobsRoot {
   jobs: Job[]
@@ -13,6 +13,7 @@ export interface Job {
   link: string
   scraped_from: string
   company: string | undefined;
+  locations: string[];
   image_url: string;
 }
 
